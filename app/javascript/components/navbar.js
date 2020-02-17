@@ -19,7 +19,7 @@ const scrolledNav = () => {
         })
       }
 
-      if (window.scrollY >= 150) {
+      if (window.scrollY >= 200) {
         navbarSearch.classList.remove('d-none');
         bannerSearch.classList.add('d-none');
         navbarBrand.classList.remove('flex-grow-1');
