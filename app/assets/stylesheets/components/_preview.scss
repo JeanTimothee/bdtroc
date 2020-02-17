@@ -1,0 +1,28 @@
+.carousel-indicators {
+  top: 10px;
+  li {
+    background-color: black;
+  }
+}
+
+.carousel-control-prev, .carousel-control-next {
+  top: 10px;
+  align-items: flex-start;
+  color: black;
+  &:hover {
+    color: black;
+  }
+  &:focus {
+    color: black;
+  }
+}
+
+.modal-body {
+  padding: 0rem 1rem;
+}
+
+ #carouselExampleIndicators {
+  padding: 2rem 0rem;
+}
+
+
