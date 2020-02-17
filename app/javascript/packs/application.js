@@ -23,3 +23,6 @@ require("channels")
 // ----------------------------------------------------
 
 import "bootstrap";
+import { ScrolledNav } from 'components/navbar'
+
+ScrolledNav();
