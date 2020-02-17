@@ -10,3 +10,26 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar {
+  .search {
+  flex-grow: 1;
+  }
+  .search-input {
+  width: 50%;
+  display: inline-block;
+  }
+  .navbar-btn {
+    border: 1px solid black;
+    color: black;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+    width: 80px;
+    text-align: center;
+  }
+  .white-btn {
+    color: white;
+    border-color: white;
+  }
+}

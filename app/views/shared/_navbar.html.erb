@@ -1,0 +1,38 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
+  <%= link_to "#", class: "navbar-brand" do %>
+    <%= image_tag "https://www.dezign.fr/images/sticker-mural-bulle-bd-interogation.png" %>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+ <div class="search">
+    <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+      <div class="search-form-control form-group mb-0">
+        <input class="search-input form-control string required" type="text" name="search[query]" id="search_query" />
+        <button name="button" type="submit" class="btn btn-flat">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    </form>
+  </div>
+
+
+  <% if user_signed_in? %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD81BKEhS8aGvGBXZvAfWPd4jMXcFi3FJ0Gsi09WnRqiIPZIFbjA&s", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  <% else %>
+    <%= link_to "login", new_user_session_path, class: "navbar-btn" %>
+    <%= link_to "sign-up", new_user_registration_path, class: "navbar-btn" %>
+  <% end %>
+</div>
