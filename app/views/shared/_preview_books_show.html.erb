@@ -21,19 +21,14 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2">3</li>
             <li data-target="#carouselExampleIndicators" data-slide-to="3">4</li>
           </ol>
+
+
           <div class="carousel-inner">
-            <div class="carousel-item active" data-interval="false">
-              <img src="https://www.editions-delcourt.fr/images/planches/ring-circus-integrale_1.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item" data-interval="false">
-              <img src="https://www.editions-delcourt.fr/images/planches/ring-circus-integrale_2.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item" data-interval="false">
-              <img src="https://www.editions-delcourt.fr/images/planches/ring-circus-integrale_3.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item" data-interval="false">
-              <img src="https://www.editions-delcourt.fr/images/planches/ring-circus-integrale_4.jpg" class="d-block w-100" alt="...">
-            </div>
+            <% @book.previews.each do |preview| %>
+              <div class="carousel-item active" data-interval="false">
+                <%= cl_image_tag preview.key, class: "d-block w-100" %>
+              </div>
+            <% end %>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 <!--             <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
