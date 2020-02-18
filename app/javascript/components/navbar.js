@@ -1,9 +1,9 @@
 const scrolledNav = () => {
-  const navbar = document.querySelector('.navbar-lewagon');
-  const buttons = document.querySelectorAll('.navbar-btn');
-  const navbarSearch = document.querySelector('.navbar .search');
-  const bannerSearch = document.querySelector('.banner .search');
-  const navbarBrand = document.querySelector('.navbar-brand');
+  const navbar = document.querySelector('#js-scroll-navbar');
+  const buttons = document.querySelectorAll('#js-btn-white');
+  const navbarSearch = document.querySelector('#js-navbar-search');
+  const bannerSearch = document.querySelector('#js-banner-search');
+  const navbarBrand = document.querySelector('#js-navbar-brand');
   if (navbar) {
     window.addEventListener('scroll', () => {
       if (window.scrollY >= 460) {
