@@ -24,5 +24,13 @@ require("channels")
 
 import "bootstrap";
 import { scrolledNav } from 'components/navbar'
+import { stopCarousel } from 'components/carousel'
 
+// scroll effect of the navbar on Home Page
 scrolledNav();
+
+// stop boostrap carousel (for preview) to autoplay
+stopCarousel();
+
+
+
