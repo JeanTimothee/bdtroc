@@ -1,11 +1,13 @@
 class BooksController < ApplicationController
   def index
     @books = Book.all
+    @books = policy_scope(Book).order(created_at: :desc)
   end
 
   def show
     @book = Book.find(params[:id])
     @bookings = Booking.where(book_id: @book)
+    authorize @book
   end
   def new
     @book = Book.new
@@ -17,6 +19,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book)
     else render :new
     end
+    authorize @book
   end
 
   def edit
@@ -24,12 +27,14 @@ class BooksController < ApplicationController
   end
 
   def update
+    authorize @book
     @book = Book.find(params[:id])
     @book.update(book_params)
     redirect_to book_path(@book)
   end
 
   def destroy
+    authorize @book
     @book = Book.find(params[:id])
     @book.destroy
 
