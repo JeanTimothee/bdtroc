@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <%= simple_form_for [@book, @booking] do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
+    <%= f.input :start_date, input_html: { class: "#{"is-invalid" if @booking_valid == false}" }  %>
+    <%= f.input :end_date, input_html: { class: "#{"is-invalid" if @booking_valid == false}" } %>
     <%= f.submit %>
   <% end %>
 </div>
