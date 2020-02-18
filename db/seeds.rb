@@ -9,7 +9,7 @@ require 'nokogiri'
 #   Character.create(name: 'Luke', movie: movies.first)
 
 5.times do
-  user = User.new(email: Faker::Internet.email, password: Faker::Internet.password(special_chars = false, min_length = 8, max_length = 16, mix_case = true))
+  user = User.new(email: Faker::Internet.email, password: '12345test')
   user.save
 end
 puts User.all
