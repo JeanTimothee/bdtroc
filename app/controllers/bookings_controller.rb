@@ -9,7 +9,6 @@ class BookingsController < ApplicationController
 
   def new
     @book = Book.find(params[:book_id])
-    @user = current_user
     @booking = Booking.new
   end
 
@@ -17,7 +16,12 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.book = Book.find(params[:book_id])
     @booking.user = current_user
+    total_points = (@booking.end_date - @booking.start_date).to_i
+    @booking.total_points = total_points
+    current_user.points = total_points
+
     if @booking.save
+      current_user.save
       redirect_to booking_path(@booking)
     else
       render :new

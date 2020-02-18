@@ -1,6 +1,7 @@
-<%= simple_form_for [@booking, @book, @user] do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.input :rating %>
-  <%= f.submit %>
-<% end %>
+<div class="container mt-5">
+  <%= simple_form_for [@book, @booking] do |f| %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.submit %>
+  <% end %>
+</div>
