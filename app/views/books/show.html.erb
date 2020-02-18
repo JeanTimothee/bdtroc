@@ -1,11 +1,11 @@
-<%= render 'shared/banner' %>
-
 <h1><%= @book.name %></h1>
 
-<%= link_to "Delete #{@book.name}", edit_book_path(@book) %>
+<%= link_to "Edit #{@book.name}", edit_book_path(@book), :class => "btn btn-info mb-2" %><br>
+
 <%= link_to "Delete #{@book.name}",
             book_path(@book),
             method: :delete,
-            data: { confirm: "Are you sure?" } %>
+            data: { confirm: "Are you sure?" },
+            :class => "btn btn-danger mb-2" %><br>
 
 <%= render 'shared/preview' %>
