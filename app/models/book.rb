@@ -2,10 +2,8 @@ class Book < ApplicationRecord
   belongs_to :user
   has_many :reviews
   has_many :bookings
+  has_one_attached :cover
+  has_many_attached :previews
 
-  validates :name, presence: true
-  validates :cover_url, presence: true
-  validates :illustrator, presence: true
-  validates :scenarist, presence: true
-  validates :description, presence: true
+  validates :name, :illustrator, :scenarist, :description, :cover, :previews, presence: true
 end

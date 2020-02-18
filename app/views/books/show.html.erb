@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card-book">
     <div class="card-book-left">
-      <%= image_tag @book.cover_url %>
+       <%= cl_image_tag @book.cover.key %>
       <%= render 'shared/preview_books_show' %>
     </div>
     <div class="card-book-right">
@@ -30,5 +30,6 @@
               data: { confirm: "Are you sure?" },
               :class => "btn btn-danger mb-2" %><br>
 </div>
+
 
 
