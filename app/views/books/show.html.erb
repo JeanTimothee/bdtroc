@@ -1,0 +1,7 @@
+<h1><%= @book.name %></h1>
+
+<%= link_to "Delete #{@book.name}", edit_book_path(@book) %>
+<%= link_to "Delete #{@book.name}",
+            book_path(@book),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
