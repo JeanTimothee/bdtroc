@@ -10,8 +10,10 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
-
+    
+    <% if params[:action] != 'home'  %>
+      <%= render 'shared/navbar'%>
+    <% end %>
     <% if params[:controller] == "bookings" && params[:action] == "create" %>
       <%= render 'shared/flashes' %>
     <% end %>
@@ -20,6 +22,8 @@
       <%= render 'shared/flashes' %>
     <% end %>
 
+
     <%= yield %>
+
   </body>
 </html>
