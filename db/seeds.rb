@@ -44,22 +44,33 @@ html_doc.search('.item .title a').each do |element|
       illustrator = page.search('.metadatas li:nth-child(2)').text.split(':').last.gsub(/\s{2,}/, ' ').strip
       description = page.search('.resume p').text
       cover_url = page.search('.visual a').attribute('href').value
-      preview1 = page.search('.visual .previews a:first-child').attribute('href')
-      preview1_url = preview1.value if preview1
-      preview2 = page.search('.visual .previews a:nth-child(2)').attribute('href')
-      preview2_url = preview2.value if preview2
-      preview3 = page.search('.visual .previews a:nth-child(3)').attribute('href')
-      preview3_url = preview3.value if preview3
-      preview4 = page.search('.visual .previews a:nth-child(4)').attribute('href')
-      preview4_url = preview4.value if preview4
 
+      counter = 1
+      previews_url = []
+      if page.at_css('.visual .previews a') != nil
+        4.times do
+          preview = page.search(".visual .previews a:nth-child(#{counter})").attribute('href')
+          preview_url = preview.value if preview
+          previews_url << preview_url
+          counter += 1
+        end
+      end
 
       cover_file = URI.open(cover_url)
-      if cover_url.split('.').last == 'jpg'
+      if cover_url.split('.').last == 'jpg' && previews_url != []
         book = Book.new(name: book_title, illustrator: illustrator, scenarist: scenarist, description: description)
         book.user = @user1
         book.cover.attach(io: cover_file, filename: "cover.jpg", content_type: 'image/jpg')
+
+        previews_files = []
+        previews_url.each_with_index do |preview_url, i|
+          preview_file = URI.open(preview_url)
+          preview_hash = {io: preview_file, filename: "preview#{i+1}.jpg", content_type: 'image/jpg'}
+          previews_files << preview_hash
+        end
+        book.previews.attach(previews_files)
         book.save!
+        p "#{book.name} >>> created"
       end
     end
   end
