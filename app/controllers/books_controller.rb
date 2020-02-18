@@ -9,8 +9,14 @@ class BooksController < ApplicationController
     @bookings = Booking.where(book_id: @book)
     authorize @book
   end
+
   def new
-    @book = Book.new
+    if user_signed_in?
+      @book = Book.new
+    else redirect_to 'devise/sessions#new'
+    end
+    skip_after_action :verify_authorized
+
   end
 
   def create
