@@ -20,10 +20,24 @@ class BookingsController < ApplicationController
     @booking.total_points = total_points
     current_user.points = total_points
 
-    if @booking.save
+    bookings = Booking.where(book_id: @booking.book)
+    @booking_valid = true
+    new_booking_range = (@booking.start_date..@booking.end_date)
+
+    bookings.each do |booking|
+      actual_booking_range = (booking.start_date..booking.end_date)
+      if actual_booking_range.include?(@booking.start_date) || actual_booking_range.include?(@booking.end_date) || new_booking_range.include?(actual_booking_range)
+        @booking_valid = false
+      end
+    end
+
+    if @booking_valid && @booking.save
       current_user.save
       redirect_to booking_path(@booking)
     else
+      flash[:alert] = "Book not available for this dates"
+      @booking.end_date = nil
+      @booking.start_date = nil
       render :new
     end
   end
