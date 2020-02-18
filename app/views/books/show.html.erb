@@ -1,0 +1,27 @@
+<div class="card-book">
+  <%#= cl_image_tag @book.cover_url%>
+  <ul>
+    <li><%= @book.name %></li>
+    <li><%= @book.illustrator %></li>
+    <li><%= @book.scenarist %></li>
+    <li><%= @book.description %></li>
+    <li> <b>Bookings</b>
+      <ul>
+        <% @bookings.each do |booking| %>
+          <li><b>From: </b><%= booking.start_date %>, <b>to: </b><%= booking.end_date %></li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+<%= render 'shared/preview' %>
+</div>
+
+<%= link_to "Edit #{@book.name}", edit_book_path(@book), :class => "btn btn-info mb-2" %><br>
+
+<%= link_to "Delete #{@book.name}",
+            book_path(@book),
+            method: :delete,
+            data: { confirm: "Are you sure?" },
+            :class => "btn btn-danger mb-2" %><br>
+
+<%= render 'shared/preview' %>

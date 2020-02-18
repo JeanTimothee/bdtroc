@@ -2,17 +2,7 @@
 
   <h1>New Book</h1>
 
-  <%=  simple_form_for(@book) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :genre %>
-    <%= f.input :illustrator %>
-    <%= f.input :scenarist %>
-    <%= f.input :date, discard_day: true, discard_month: true, label: "Publication", start_year: Date.today.year - 110, end_year: Date.today.year %>
-    <%= f.input :description, as: :text %>
-    <%= f.input :cover_url, as: :file %>
-    <%= f.input :preview, as: :file %>
-    <%= f.submit %>
-  <% end %>
+<%= render 'shared/form', book: @book %>
 
 </div>
 
