@@ -1,4 +1,13 @@
-<h1><%= @book.name %></h1>
+<div class="card-book">
+  <%#= cl_image_tag @book.cover_url%>
+  <ul>
+    <li><%= @book.name %></li>
+    <li><%= @book.illustrator %></li>
+    <li><%= @book.scenarist %></li>
+    <li><%= @book.description %></li>
+  </ul>
+<%= render 'shared/preview' %>
+</div>
 
 <%= link_to "Edit #{@book.name}", edit_book_path(@book), :class => "btn btn-info mb-2" %><br>
 
