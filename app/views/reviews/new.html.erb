@@ -1,0 +1,6 @@
+<div class="container">
+  <%= simple_form_for [ @book, @review ] do |f| %>
+    <%= f.input :content %>
+    <%= f.submit "Submit review", class: "btn btn-primary" %>
+  <% end %>
+</div>
