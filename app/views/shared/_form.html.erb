@@ -5,7 +5,7 @@
     <%= f.input :scenarist %>
     <%= f.input :date, discard_day: true, discard_month: true, label: "Publication", start_year: Date.today.year - 110, end_year: Date.today.year %>
     <%= f.input :description, as: :text %>
-    <%= f.input :cover_url, as: :file %>
-    <%= f.input :preview, as: :file %>
+    <%= f.input :cover, as: :file %>
+    <%= f.input :previews, as: :file, input_html: { multiple: true } %>
     <%= f.submit %>
   <% end %>
