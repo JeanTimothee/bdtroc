@@ -1,50 +1,73 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-require 'faker'
 require 'open-uri'
 require 'nokogiri'
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
-5.times do
-  user = User.new(email: Faker::Internet.email, password: '12345test')
-  user.save
+puts 'Destroy all Booking'
+Booking.destroy_all
+puts 'Destroy all Books'
+Book.destroy_all
+puts 'Destroy all users'
+User.destroy_all
+puts '>>>>>> Done!'
+puts '----------------'
+
+
+puts 'Create users'
+@user1 = User.create!(email: 'user1@gmail.com', password:'123456')
+@user2 = User.create!(email: 'user2@gmail.com', password:'123456')
+@user3 = User.create!(email: 'user3@gmail.com', password:'123456')
+@user4 = User.create!(email: 'user4@gmail.com', password:'123456')
+@user5 = User.create!(email: 'user5@gmail.com', password:'123456')
+puts '>>>>>> Done!'
+puts "#{User.count} users created!"
+puts '----------------'
+
+
+puts 'Create Books'
+
+url = "https://www.editions-delcourt.fr/bd/liste-des-collections-bd/terres-de-legendes.html"
+
+html_file = open(url).read
+html_doc = Nokogiri::HTML(html_file)
+
+html_doc.search('.item .title a').each do |element|
+  serie_url = element.attribute('href').value
+
+  if serie_url.start_with?('/serie')
+    book_url = "https://www.editions-delcourt.fr/#{serie_url}"
+
+    html_file_book = open(book_url).read
+    html_doc_book = Nokogiri::HTML(html_file_book)
+
+    html_doc_book.search('.page-content').each do |page|
+      book_title = page.search('.details .title').text
+      scenarist = page.search('.metadatas li:first-child').text.split(':').last.gsub(/\s{2,}/, ' ').strip
+      illustrator = page.search('.metadatas li:nth-child(2)').text.split(':').last.gsub(/\s{2,}/, ' ').strip
+      description = page.search('.resume p').text
+      p cover_url = page.search('.visual a').attribute('href').value
+      preview1 = page.search('.visual .previews a:first-child').attribute('href')
+      preview1_url = preview1.value if preview1
+      preview2 = page.search('.visual .previews a:nth-child(2)').attribute('href')
+      preview2_url = preview2.value if preview2
+      preview3 = page.search('.visual .previews a:nth-child(3)').attribute('href')
+      preview3_url = preview3.value if preview3
+      preview4 = page.search('.visual .previews a:nth-child(4)').attribute('href')
+      preview4_url = preview4.value if preview4
+
+
+      cover_file = URI.open(cover_url)
+      book = Book.new(name: book_title, illustrator: illustrator, scenarist: scenarist, description: description)
+      book.user = @user1
+      if cover_url.split('.').last == 'jpg'
+        book.cover.attach(io: cover_file, filename: "cover.jpg", content_type: 'image/jpg')
+      elsif cover_url.split('.').last == 'png'
+        puts 'je suis là'
+        book.cover.attach(io: cover_file, filename: "cover.png", content_type: 'image/png')
+      end
+      book.save!
+    end
+  end
 end
-puts User.all
 
-
-@b1 = Book.new(name: 'Petit traité de Vélosophie', cover_url: 'https://www.editions-delcourt.fr/images/couvertures/petitTraiteDeVelosophie.jpg', illustrator: 'Tronchet', scenarist: 'Tronchet', description: 'Cycliste convaincu et baladeur invétéré depuis l’enfance, Didier Tronchet fait l’apologie du vélo et de ses bienfaits sur l’humanité. 54 planches d’humour bon enfant et un tantinet provocateur.', user_id: rand(6))
-@b1.save!
-
-@b2 = Book.new(name: "Donjon Antipodes -10000. L'Armée du crâne", cover_url: 'https://www.editions-delcourt.fr/images/couvertures/donjonAntipodes10.000.jpg', illustrator: 'PANACCIONE Grégory', scenarist: 'SFAR Joann', description: 'Après avoir conclu la méta-histoire de Donjon  avec les tomes 110 et 111 en 2014, Sfar et Trondheim offre un nouveau souffle à leur saga culte. Un grand retour qui débute avec la création d’une série aux « antipodes » des précédents.', user_id: rand(6))
-@b2.save!
-
-@b3 = Book.new(name: "Carnets d aventures ordinaires - L'Homme T01", cover_url: 'https://www.editions-delcourt.fr/images/couvertures/hommeT1.jpg', illustrator: 'Mademoiselle Caroline', scenarist: 'Mademoiselle Caroline', description: 'Si vous aussi vous êtes tombés sous le charme du regard malicieux de Mademoiselle Caroline, découvrez sans tarder ce premier recueil de ses Solitudes et Aventures ordinaires consacré à l’observation de son Homme…', user_id: rand(6))
-@b3.save!
-
-
-# test seed scraping
-# @url = 'https://www.editions-delcourt.fr/bd/liste-des-collections-bd/humour-de-rire.html'
-# @html_file = open(@url).read
-# @html_doc = Nokogiri::HTML(@html_file)
-# @html_doc.search('.item .title a').each do |element|
-#   @href = element.attribute('href').value
-#   @url2 = "https://www.editions-delcourt.fr#{@href}"
-#   @html_file2 = open(@url2).read
-#   @html_doc2 = Nokogiri::HTML(@html_file2)
-#   title = @html_doc2.search('.page-content .details .title')
-#   @html_doc2.search('.details .metadatas')
-# end
-
-
-# @a = []
-# @html_doc.search('.thumb img').each do |element|
-#   src = element.attribute('src').value
-#   url2 = "https://www.editions-delcourt.fr#{src}"
-#   html_file2 = open(url2).read
-#   html_doc2 = Nokogiri::HTML(html_file2)
-#   book = Book.new(name: 'test', cover_url: url2, illustrator: 'test', scenarist: 'test', description: 'test', user_id: 1)
-#   book.save
-# end
+puts '>>>>>> Done!'
+puts "#{Book.count} books created!"
+puts '----------------'

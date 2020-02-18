@@ -5,5 +5,5 @@ class Book < ApplicationRecord
   has_one_attached :cover
   has_many_attached :previews
 
-  validates :name, :illustrator, :scenarist, :description, :cover, :previews, presence: true
+  validates :name, :illustrator, :scenarist, :description, :cover, presence: true
 end
