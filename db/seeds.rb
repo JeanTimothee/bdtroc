@@ -43,7 +43,7 @@ html_doc.search('.item .title a').each do |element|
       scenarist = page.search('.metadatas li:first-child').text.split(':').last.gsub(/\s{2,}/, ' ').strip
       illustrator = page.search('.metadatas li:nth-child(2)').text.split(':').last.gsub(/\s{2,}/, ' ').strip
       description = page.search('.resume p').text
-      p cover_url = page.search('.visual a').attribute('href').value
+      cover_url = page.search('.visual a').attribute('href').value
       preview1 = page.search('.visual .previews a:first-child').attribute('href')
       preview1_url = preview1.value if preview1
       preview2 = page.search('.visual .previews a:nth-child(2)').attribute('href')
@@ -55,15 +55,12 @@ html_doc.search('.item .title a').each do |element|
 
 
       cover_file = URI.open(cover_url)
-      book = Book.new(name: book_title, illustrator: illustrator, scenarist: scenarist, description: description)
-      book.user = @user1
       if cover_url.split('.').last == 'jpg'
+        book = Book.new(name: book_title, illustrator: illustrator, scenarist: scenarist, description: description)
+        book.user = @user1
         book.cover.attach(io: cover_file, filename: "cover.jpg", content_type: 'image/jpg')
-      elsif cover_url.split('.').last == 'png'
-        puts 'je suis là'
-        book.cover.attach(io: cover_file, filename: "cover.png", content_type: 'image/png')
+        book.save!
       end
-      book.save!
     end
   end
 end
