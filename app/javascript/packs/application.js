@@ -32,5 +32,11 @@ scrolledNav();
 // stop boostrap carousel (for preview) to autoplay
 stopCarousel();
 
+import { loadDynamicBannerText } from '../components/banner';
 
+document.addEventListener('turbolinks:load', () => {
+  // Call your JS functions here
+  // [...]
+  loadDynamicBannerText();
+});
 
