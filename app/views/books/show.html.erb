@@ -5,6 +5,13 @@
     <li><%= @book.illustrator %></li>
     <li><%= @book.scenarist %></li>
     <li><%= @book.description %></li>
+    <li> <b>Bookings</b>
+      <ul>
+        <% @bookings.each do |booking| %>
+          <li><b>From: </b><%= booking.start_date %>, <b>to: </b><%= booking.end_date %></li>
+        <% end %>
+      </ul>
+    </li>
   </ul>
 <%= render 'shared/preview' %>
 </div>

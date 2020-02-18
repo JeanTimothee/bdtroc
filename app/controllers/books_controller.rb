@@ -5,6 +5,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @bookings = Booking.where(book_id: @book)
   end
   def new
     @book = Book.new

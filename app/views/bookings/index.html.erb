@@ -2,8 +2,8 @@
   <% @bookings.each do |booking| %>
     <div class="">
       <ul>
-        <li><b>Book:</b> <%= booking.book %></li>
-        <li><b>User:</b> <%= booking.user %></li>
+        <li><b>Book:</b> <%= booking.book.name %></li>
+        <li><b>User:</b> <%= booking.user.email %></li>
         <li><b>From:</b> <%= booking.start_date %></li>
         <li><b>To:</b> <%= booking.end_date %></li>
         <li><b>Points generated:</b> <%= booking.total_points %></li>
