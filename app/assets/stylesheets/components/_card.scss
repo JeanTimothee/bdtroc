@@ -1,35 +1,53 @@
 .card-book {
+  display: flex;
+  margin-top: 100px;
   overflow: hidden;
   background: white;
+  height: 70vh;
+  border-radius: 20px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  justify-content: space-between;
+}
+
+.card-book-left {
+  position: relative;
   img {
-  height: 200px;
-  width: 40%;
-  object-fit: cover;0
+    height: 100%;
+    padding: 8px;
+    border-radius: 20px;
   }
-  h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
+  &:hover img {
+    opacity: 0.5;
   }
-  p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
+  &:hover button {
+    display:block;
   }
-  .card-book-infos {
-  padding: 16px;
+}
+.card-book-left > button {
+    position: absolute;
+    left: 33%;
+    top: 50%;
+    display: none;
+  }
+
+.card-book-right {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  position: relative;
+  padding: 8px;
+}
+.card-book-infos {
+  text-align: left;
+  padding-top: 16px;
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
   }
-  .card-book-user {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
+  p {
+    font-size: 16px;
+    opacity: .7;
+    margin: 0;
   }
 }
