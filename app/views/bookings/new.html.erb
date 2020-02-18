@@ -1,0 +1,6 @@
+<%= simple_form_for [@booking, @book, @user] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :rating %>
+  <%= f.submit %>
+<% end %>
