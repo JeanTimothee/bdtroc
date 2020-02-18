@@ -21,6 +21,8 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    @book.user = current_user
+
     if @book.save # unable to save because no user yet
       redirect_to book_path(@book)
     else render :new
@@ -51,6 +53,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:name,:genre, :preview, :cover_url, :illustrator, :scenarist, :description, :date)
+    params.require(:book).permit(:name, :genre, :cover, :illustrator, :scenarist, :description, :date, previews: [])
   end
 end

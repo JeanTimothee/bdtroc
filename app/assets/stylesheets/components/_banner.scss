@@ -27,6 +27,11 @@
   display: inline-block;
   padding-top: 30px;
   padding-bottom: 30px;
+
+}
+
+.banner-typed-text:focus::-webkit-input-placeholder {
+    color: transparent;
 }
 
 .banner .search button {
