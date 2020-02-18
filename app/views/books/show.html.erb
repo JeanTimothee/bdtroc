@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card-book">
     <div class="card-book-left">
-       <%= cl_image_tag @book.cover.key %>
+       <%= cl_image_tag @book.cover.key, class: "cover" %>
       <%= render 'shared/preview_books_show' %>
     </div>
     <div class="card-book-right">

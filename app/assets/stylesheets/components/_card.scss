@@ -8,14 +8,18 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+
 .card-book-left {
   position: relative;
+  .cover {
+    transition: opacity 500ms ease-out;
+  }
   img {
     height: 100%;
     padding: 8px;
     border-radius: 20px;
   }
-  &:hover img {
+  &:hover .cover {
     opacity: 0.5;
   }
   &:hover button {
