@@ -1,13 +1,10 @@
 .card-book {
-  display: flex;
-  margin-top: 100px;
-  overflow: hidden;
+  margin-top: 50px;
   background: white;
-  height: 70vh;
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 20px;
 }
-
 
 .card-book-left {
   position: relative;
@@ -15,9 +12,9 @@
     transition: opacity 500ms ease-out;
   }
   img {
-    height: 100%;
-    padding: 8px;
+    width: 100%;
     border-radius: 20px;
+    margin-bottom: 20px;
   }
   &:hover .cover {
     opacity: 0.5;
@@ -36,12 +33,12 @@
 .card-book-right {
   display: flex;
   flex-direction: column;
-  padding: 8px;
+  .card-book-bookings {
+    margin-top: 10px;
+  }
 }
 .card-book-infos {
   text-align: left;
-  padding-top: 16px;
-  padding-bottom: 8px;
   display: flex;
   flex-direction: column;
   h2 {
@@ -57,7 +54,6 @@
 }
 .book-btn{
     width: 70%;
-    // opacity:0.7;
     background-color: #40bfc1;
     border-color: transparent;
     font-weight: bold;
@@ -65,7 +61,6 @@
     color: white;
 
     &:hover {
-      // opacity:1;
       background-color: #007272;
       border-color: transparent;
       color: white;
@@ -141,6 +136,9 @@
   .cards-index {
     grid-template-columns: 1fr;
   }
+  .card-category img {
+    height: 100%;
+  }
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -148,12 +146,18 @@
   .cards-index {
     grid-template-columns: 1fr;
   }
+  .card-category img {
+    height: 100%;
+  }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .cards-index {
     grid-template-columns: 1fr 1fr;
+  }
+  .card-category img {
+    height: 400px;
   }
 }
 
