@@ -5,6 +5,10 @@ class BookPolicy < ApplicationPolicy
     end
   end
 
+  def edit?
+    is_owner?
+  end
+
   def show?
     true
   end
@@ -18,7 +22,7 @@ class BookPolicy < ApplicationPolicy
   end
 
   def update?
-    is_owner?
+    edit?
   end
 
   def delete?
@@ -28,7 +32,7 @@ class BookPolicy < ApplicationPolicy
   private
 
   def is_owner?
-    record.user = user
+    record.user == user
   end
 
 end
