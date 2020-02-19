@@ -54,14 +54,14 @@
 }
 .book-btn{
     width: 70%;
-    background-color: #40bfc1;
+    background-color: $red;
     border-color: transparent;
     font-weight: bold;
     margin-left: 100px;
     color: white;
 
     &:hover {
-      background-color: #007272;
+      background-color: $dark-red;
       border-color: transparent;
       color: white;
     }
@@ -74,7 +74,7 @@
 .edit-admin-btn{
   font-size: 8px;
   padding: 7px 29px;
-  background-color: #ff6f5e;
+  background-color: $medium-gray;
   color: white;
   font-weight: bold;
   margin: 8px 5px;
@@ -85,7 +85,7 @@
   opacity:0.8;
   font-size: 8px;
   padding: 7px 24px;
-  background-color: #f0134d;
+  background-color: $medium-gray;
   color: white;
   font-weight: bold;
   margin: 8px 5px;
