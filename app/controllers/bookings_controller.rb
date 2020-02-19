@@ -40,10 +40,10 @@ class BookingsController < ApplicationController
       current_user.save
       redirect_to booking_path(@booking)
     else
-      flash[:alert] = "Book not available for this dates"
-      @booking.end_date = nil
-      @booking.start_date = nil
-      render :new
+      redirect_to new_book_booking_path(@booking.book, flash: 'Book not available for this dates')
+      # flash[:alert] = "Book not available for this dates"
+      # @booking.end_date = nil
+      # @booking.start_date = nil
     end
   end
 
