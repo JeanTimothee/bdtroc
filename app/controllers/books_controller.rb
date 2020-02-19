@@ -1,18 +1,19 @@
 class BooksController < ApplicationController
   def index
     @books = Book.all
+    @books = policy_scope(Book)
   end
 
   def show
     @book = Book.find(params[:id])
     @bookings = Booking.where(book_id: @book)
+    authorize @book
   end
 
   def new
-    if user_signed_in?
-      @book = Book.new
-    else redirect_to new_user_session_path
-    end
+    @book = Book.new
+    #raise
+    authorize @book
   end
 
   def create
@@ -27,15 +28,18 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    authorize @book
   end
 
   def update
+    authorize @book
     @book = Book.find(params[:id])
     @book.update(book_params)
     redirect_to book_path(@book)
   end
 
   def destroy
+    authorize @book
     @book = Book.find(params[:id])
     @book.destroy
 

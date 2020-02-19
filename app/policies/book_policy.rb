@@ -10,7 +10,7 @@ class BookPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    new?
   end
 
   def new?
