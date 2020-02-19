@@ -12,24 +12,25 @@
         <p><b>Description: </b><%= @book.description %></p>
       </div>
       <div>
-        <h2 style= "font-size: 24px">Bookings</h3>
+        <h2 style= "font-size: 24px">Last 3 bookings</h3>
           <ul>
-            <% @bookings.each do |booking| %>
+            <% @bookings.last(3).each do |booking| %>
               <li><b>From: </b><%= booking.start_date %>, <b>to: </b><%= booking.end_date %></li>
             <% end %>
           </ul>
       </div>
+    <%= link_to "Book this comic", new_book_booking_path(@book), :class => "book-btn btn my-2" %><br>
     </div>
   </div>
+  <div class= "btm-btns">
+  <%= link_to "Edit", edit_book_path(@book), :class => "edit-admin-btn btn my-2" %><br>
 
-  <%= link_to "Book #{@book.name}", new_book_booking_path(@book), :class => "btn btn-primary my-2" %><br>
-  <%= link_to "Edit #{@book.name}", edit_book_path(@book), :class => "btn btn-info my-2" %><br>
-
-  <%= link_to "Delete #{@book.name}",
+  <%= link_to "Delete",
               book_path(@book),
               method: :delete,
               data: { confirm: "Are you sure?" },
-              :class => "btn btn-danger mb-2" %><br>
+              :class => "delete-admin-btn btn mb-2" %><br>
+  </div>
 </div>
 
 
