@@ -1,8 +1,21 @@
 <div class="booking-container container mt-5 w-50">
-  <h2><%= @book.name %></h2>
+  <h2>
+    <% if @book %>
+      <%= @book.name %>
+    <% end %>
+    <% if @booking.book %>
+      <%= @booking.book.name %>
+    <% end %>
+  </h2>
+  <% if params[:flash] %>
+    <b style="color:red"><%= params[:flash] %></b>
+  <% end %>
   <%= simple_form_for [@book, @booking] do |f| %>
     <%= f.input :start_date, input_html: { class: "#{"is-invalid" if @booking_valid == false}" }  %>
     <%= f.input :end_date, input_html: { class: "#{"is-invalid" if @booking_valid == false}" } %>
     <%= f.submit "Make a Reservation", class: "btn btn-flat" %>
   <% end %>
 </div>
+
+
+

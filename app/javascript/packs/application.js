@@ -27,10 +27,8 @@ import { scrolledNav } from 'components/navbar'
 import { stopCarousel } from 'components/carousel'
 
 // scroll effect of the navbar on Home Page
-scrolledNav();
 
 // stop boostrap carousel (for preview) to autoplay
-stopCarousel();
 
 import { loadDynamicBannerText } from '../components/banner';
 
@@ -38,5 +36,7 @@ document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   // [...]
   loadDynamicBannerText();
+  scrolledNav();
+  stopCarousel();
 });
 
