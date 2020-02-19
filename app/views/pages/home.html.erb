@@ -2,13 +2,19 @@
 
 <%= render 'shared/banner' %>
 
-<div class="cards-index">
-  <% if @books %>
-    <% @books.each do |book| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
-      <%= cl_image_tag book.cover.key %>
-      <%= book.name %>
-    </div>
+<div class="container">
+  <div class="cards-index">
+    <% if @books %>
+      <% @books.each do |book| %>
+        <%= link_to book_path(book) do %>
+          <div class="card-category">
+            <%= cl_image_tag book.cover.key, class: "cover"%>
+            <div>
+              <h3><%= book.name %></h3>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
