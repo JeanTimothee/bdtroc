@@ -1,9 +1,28 @@
-<div class="">
-  <ul>
-    <li><b>Book:</b> <%= @booking.book.name %></li>
-    <li><b>User:</b> <%= @booking.user.email %></li>
-    <li><b>From:</b> <%= @booking.start_date %></li>
-    <li><b>To:</b> <%= @booking.end_date %></li>
-    <li><b>Points generated:</b> <%= @booking.total_points %></li>
-  </ul>
+<div class="booking-container container w-50 mt-5">
+  <div class="anim-checkmark">
+    <label class="checkmark-label">
+      <input  class="anim-checkmark-label__checkbox" type="checkbox" />
+      <span class="anim-checkmark-label__text">
+        <span class="anim-checkmark-label__check">
+          <i class="fa fa-check icon"></i>
+        </span>
+      </span>
+    </label>
+  </div>
+
+  <h2 class="text-center">Yeah! You Booked <%= @booking.book.name %>!</h2>
+  <h3 class="text-center">Happy Reading!</h3>
+  <div class="container">
+    <ul class="list-unstyled mt-3 ml-5">
+      <li><b>Book:</b> <%= @booking.book.name %></li>
+      <li><b>From:</b> <%= @booking.start_date %></li>
+      <li><b>To:</b> <%= @booking.end_date %></li>
+      <li><b>Points generated:</b> <%= @booking.total_points %></li>
+    </ul>
+  </div>
+  <div class="container text-right">
+    <%= link_to book_path(@booking.book) do %>
+      <i class="fa fa-angle-left icon"></i> Back to Comics page
+    <% end %>
+  </div>
 </div>
