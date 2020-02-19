@@ -17,8 +17,12 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
-  def update?
+  def edit?
     is_owner?
+  end
+
+  def update?
+    edit?
   end
 
   def delete?
@@ -28,7 +32,7 @@ class BookingPolicy < ApplicationPolicy
   private
 
   def is_owner?
-    record.user = user
+    record.user == user
   end
 
 end

@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @books = Book.all
     @books = policy_scope(Book)
@@ -19,7 +20,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user = current_user
-
+    authorize @book
     if @book.save
       redirect_to book_path(@book)
     else render :new
@@ -41,8 +42,8 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    authorize @book
     @book = Book.find(params[:id])
+    authorize @book
     @book.destroy
 
     # no need for app/views/books/destroy.html.erb
