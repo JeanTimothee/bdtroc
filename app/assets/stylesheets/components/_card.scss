@@ -54,7 +54,7 @@
 }
 .book-btn{
     width: 70%;
-    background-color: $red;
+    background-color: $light-red;
     border-color: transparent;
     font-weight: bold;
     margin-left: 100px;
@@ -82,7 +82,6 @@
 }
 
 .delete-admin-btn{
-  opacity:0.8;
   font-size: 8px;
   padding: 7px 24px;
   background-color: $medium-gray;
@@ -91,6 +90,9 @@
   margin: 8px 5px;
 }
 
+.cards-index a {
+  text-decoration: none;
+}
 
 .card-category {
   overflow: hidden;
@@ -104,8 +106,9 @@
   &:hover .cover {
     opacity: 0.5;
   }
-  &:hover {
-    color: black;
+  &:hover h3 {
+    color: $dark-gray;
+    text-decoration: none;
   }
   h3 {
     padding-top : 12px;
