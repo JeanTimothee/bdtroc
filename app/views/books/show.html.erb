@@ -22,6 +22,7 @@
     </div>
   </div>
 
+  <%= link_to "Book #{@book.name}", new_book_booking_path(@book), :class => "btn btn-primary my-2" %><br>
   <%= link_to "Edit #{@book.name}", edit_book_path(@book), :class => "btn btn-info my-2" %><br>
 
   <%= link_to "Delete #{@book.name}",
