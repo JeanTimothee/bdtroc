@@ -5,16 +5,18 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def new
       @book = Book.find(params[:book_id])
-    if user_signed_in?
+    # if user_signed_in?
       @booking = Booking.new
-    else
-      flash[:alert] = "Please Login to make a reservation"
-      redirect_to new_user_session_path(path: "new-booking")
-    end
+      authorize @booking
+    # else
+    #   flash[:alert] = "Please Login to make a reservation"
+    #   redirect_to new_user_session_path(path: "new-booking")
+    # end
   end
 
   def create
@@ -45,6 +47,7 @@ class BookingsController < ApplicationController
       # @booking.end_date = nil
       # @booking.start_date = nil
     end
+    authorize @booking
   end
 
   private
