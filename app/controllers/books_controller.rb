@@ -32,10 +32,12 @@ class BooksController < ApplicationController
   end
 
   def update
-    authorize @book
     @book = Book.find(params[:id])
-    @book.update(book_params)
-    redirect_to book_path(@book)
+    authorize @book
+    if @book.update(book_params)
+      redirect_to book_path(@book)
+    else render :edit
+    end
   end
 
   def destroy
