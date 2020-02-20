@@ -21,7 +21,7 @@ require("channels")
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
-
+import "../plugins/flatpickr"
 import "bootstrap";
 import { scrolledNav } from '../components/navbar';
 import { stopCarousel } from '../components/carousel';
