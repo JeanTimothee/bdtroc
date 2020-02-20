@@ -3,8 +3,11 @@ class BooksController < ApplicationController
   def index
     @books = policy_scope(Book) # pundit authorization
     if params[:query].present?
-      @books = Book.search_by_name_illustrator_scenarist_description(params[:query])
+      @books = Book.search_by_name_illustrator_scenarist(params[:query])
     else @books = Book.all
+    end
+    if @books.count == 0
+      @books = Book.all
     end
   end
 

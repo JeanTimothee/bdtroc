@@ -9,8 +9,8 @@ class Book < ApplicationRecord
   validates :name, :illustrator, :scenarist, :description, :cover, :previews, presence: true
 
   include PgSearch::Model
-  pg_search_scope :search_by_name_illustrator_scenarist_description,
-    against: [:name, :illustrator, :scenarist, :description],
+  pg_search_scope :search_by_name_illustrator_scenarist,
+    against: [:name, :illustrator, :scenarist],
     using: {
       tsearch: { prefix: true }
     }
