@@ -41,3 +41,11 @@
 .flex-grow-1 {
   flex-grow: 1;
 }
+
+
+.navbar-points {
+  padding-right: 10px;
+  margin-right: 10px;
+  border-right: 1px solid $dark-red;
+  color: $dark-red;
+}
