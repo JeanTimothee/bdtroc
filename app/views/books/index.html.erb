@@ -1,10 +1,16 @@
-<h1>Index</h1>
-
-
-
-<ul>
-  <% @books.each do |book| %>
-    <% #book.searchable %>
-    <li><%= book.name %></li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="cards-index mt-5">
+    <% if @books %>
+      <% @books.each do |book| %>
+        <%= link_to book_path(book) do %>
+          <div class="card-category">
+            <%= cl_image_tag book.cover.key, class: "cover"%>
+            <div>
+              <h3><%= book.name %></h3>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
