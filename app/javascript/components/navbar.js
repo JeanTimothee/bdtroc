@@ -13,14 +13,14 @@ const scrolledNav = () => {
             button.classList.remove('white-btn')
         })
         balance.classList.remove('text-white');
-        balance.style.borderRight = '1px solid #660F10';
+        balance.classList.remove('border-white');
       } else {
         navbar.classList.add('bg-transparent');
         buttons.forEach(button => {
             button.classList.add('white-btn')
         })
         balance.classList.add('text-white');
-        balance.style.borderRight = '1px solid white';
+        balance.classList.add('border-white');
       }
 
       if (window.scrollY >= 200) {
