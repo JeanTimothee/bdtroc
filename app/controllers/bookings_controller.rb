@@ -24,30 +24,45 @@ class BookingsController < ApplicationController
     @booking.book = Book.find(params[:book_id])
     @booking.user = current_user
     authorize @booking
-    total_points = (@booking.end_date - @booking.start_date).to_i
-    @booking.total_points = total_points
-    current_user.points = total_points
+
+    @booking_valid = true
+    # Dates validation
 
     bookings = Booking.where(book_id: @booking.book)
-    @booking_valid = true
     new_booking_range = (@booking.start_date..@booking.end_date)
 
     bookings.each do |booking|
       actual_booking_range = (booking.start_date..booking.end_date)
       if actual_booking_range.include?(@booking.start_date) || actual_booking_range.include?(@booking.end_date) || new_booking_range.include?(actual_booking_range)
         @booking_valid = false
+        @alert = "Book not available for these dates"
       end
     end
 
+
+
+    # Points logic
+
+    @booking.total_points = (@booking.end_date - @booking.start_date).to_i
+    @booking.book.user.points = @booking.total_points
+
+    if current_user.points < @booking.total_points
+      @booking_valid = false
+      @alert = "Not enough credit"
+    else
+      current_user.points -= @booking.total_points
+    end
+
+    # Redirection
+
     if @booking_valid && @booking.save
       current_user.save
+      @booking.book.user.save
       redirect_to booking_path(@booking)
     else
-      redirect_to new_book_booking_path(@booking.book, flash: 'Book not available for this dates')
-      # flash[:alert] = "Book not available for this dates"
-      # @booking.end_date = nil
-      # @booking.start_date = nil
+      redirect_to new_book_booking_path(@booking.book, flash:@alert)
     end
+
   end
 
   private
