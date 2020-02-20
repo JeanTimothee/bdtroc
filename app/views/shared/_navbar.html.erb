@@ -21,6 +21,14 @@
     </form>
   </div>
 
+  <%= form_tag books_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a comics"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %> %>
 
   <% if user_signed_in? %>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
