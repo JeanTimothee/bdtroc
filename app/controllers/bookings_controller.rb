@@ -58,7 +58,7 @@ class BookingsController < ApplicationController
     if @booking_valid && @booking.save
       current_user.save
       @booking.book.user.save
-      redirect_to booking_path(@booking)
+      redirect_to dashboard_path
     else
       redirect_to new_book_booking_path(@booking.book, flash:@alert)
     end

@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <div class="dashboard-cards">
+    <div class="dashboard-card">
+      <div class="text-center">
+        <%= cl_image_tag current_user.avatar.key, width: 100, height: 100, crop: :fill, class: "avatar-large" %>
+      </div>
+      <ul class="list-unstyled">
+        <li><i class="fas fa-coins"></i> <%= current_user.points %></li>
+        <li><i class="fas fa-home"></i> <%= current_user.address %></li>
+      </ul>
+    </div>
+    <div class="dashboard-card">
+      <h1>Hello, <%= current_user.email %></h1>
+      <div class="dashboard-bookings">
+        <h3>Your Bookings</h3>
+        <div class="dashboard-booking">
+          <div class="dashboard-booking-cover">
+            <%= cl_image_tag current_user.bookings.last.book.cover.key, crop: :fill %>
+          </div>
+          <div class="dashboard-booking-info">
+            <p><%= current_user.bookings.last.book.name %></p>
+            <p><b>Dates</b> <%= current_user.bookings.last.start_date %> - <%= current_user.bookings.last.start_date %></p>
+            <p><b>Meeting point:</b><%= current_user.bookings.last.book.user.address %></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
