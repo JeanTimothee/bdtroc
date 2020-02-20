@@ -14,6 +14,14 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @bookings = Booking.where(book_id: @book)
+    @marker =
+      {
+        lat: @book.user.latitude,
+        lng: @book.user.longitude,
+        infoWindow: render_to_string(partial: "map_info_window", locals: { user: @book.user }),
+        image_url: helpers.asset_url('mapmarker.png')
+      }
+
     authorize @book
   end
 
