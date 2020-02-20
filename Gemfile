@@ -32,7 +32,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 
 gem 'devise'
-
+#gem 'searchkick', '~> 3.0'
+gem 'pg_search', '~> 2.3.0'
 gem 'pundit'
 gem 'cloudinary', '~> 1.12.0'
 
