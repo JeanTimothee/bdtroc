@@ -12,11 +12,22 @@ puts '----------------'
 
 
 puts 'Create users'
-@user1 = User.create!(email: 'user1@gmail.com', password:'123456')
-@user2 = User.create!(email: 'user2@gmail.com', password:'123456')
-@user3 = User.create!(email: 'user3@gmail.com', password:'123456')
-@user4 = User.create!(email: 'user4@gmail.com', password:'123456')
-@user5 = User.create!(email: 'user5@gmail.com', password:'123456')
+@user1 = User.new(email: 'user1@gmail.com', password:'123456', address: '158 Rue Oberkampf, 75011, Paris', points: 10)
+@user1.avatar.attach(io: File.open('app/assets/images/asterix-avatar.jpg'), filename: "asterix-avatar.jpg", content_type: "image/jpg")
+@user1.save!
+
+@user2 = User.create!(email: 'user2@gmail.com', password:'123456', address: '108 Rue Oberkampf, 75011 Paris', points: 10)
+@user2.avatar.attach(io: File.open('app/assets/images/obelix-avatar.jpg'), filename: "obelix-avatar.jpg", content_type: "image/jpg")
+@user2.save!
+
+@user3 = User.create!(email: 'user3@gmail.com', password:'123456', address: '123 Rue Oberkampf, 75011 Paris', points: 10)
+@user3.avatar.attach(io: File.open('app/assets/images/gaston-avatar.jpg'), filename: "gaston-avatar.jpg", content_type: "image/jpg")
+@user3.save!
+
+@user4 = User.create!(email: 'user4@gmail.com', password:'123456', address: '109 Rue Oberkampf, 75011 Paris', points: 10)
+@user4.avatar.attach(io: File.open('app/assets/images/tintin-avatar.jpg'), filename: "tintin-avatar.jpg", content_type: "image/jpg")
+@user4.save!
+
 puts '>>>>>> Done!'
 puts "#{User.count} users created!"
 puts '----------------'
