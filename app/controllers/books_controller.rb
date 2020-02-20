@@ -1,8 +1,14 @@
 class BooksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @books = Book.all
-    @books = policy_scope(Book)
+    @books = policy_scope(Book) # pundit authorization
+    if params[:query].present?
+      @books = Book.search_by_name_illustrator_scenarist(params[:query])
+    else @books = Book.all
+    end
+    if @books.count == 0
+      @books = Book.all
+    end
   end
 
   def show
@@ -13,7 +19,6 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
-    #raise
     authorize @book
   end
 
