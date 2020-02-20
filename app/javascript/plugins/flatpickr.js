@@ -19,29 +19,26 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 //   minDate:
 //   maxDate:
 // });
+
+const disableRangeDate = []
 function booked() {
-const bookings = document.getElementById('test').dataset.bookings;
+const bookings = document.getElementById('calendar-form').dataset.bookings;
   JSON.parse(bookings).forEach((element) => {
-    console.log(element.start_date);
-    let start = element.start_date;
-    let end = element.end_date;
-    const booking = [start, end];
-    return booking;
+    const obj = {};
+    obj.from = element.start_date;
+    obj.to = element.end_date;
+    disableRangeDate.push(obj)
   });
 }
+booked();
 
 flatpickr("#start-date", {
   altInput: true,
+  inLine: true,
   mode: "range",
   // defaultDate: new Date().fp_incr(1),
   minDate: new Date().fp_incr(1),
   showMonths: 2,
   "plugins": [new rangePlugin( { input: "#end-date"})],
-  disable: [
-    {
-      from: "2020-02-22",
-      to: "2020-02_27"
-    }
-  ],
+  disable: disableRangeDate
 });
-
