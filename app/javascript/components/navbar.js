@@ -1,5 +1,6 @@
 const scrolledNav = () => {
   const navbar = document.querySelector('#js-scroll-navbar');
+  const balance = document.querySelector('#js-navbar-balance');
   const buttons = document.querySelectorAll('#js-btn-white');
   const navbarSearch = document.querySelector('#js-navbar-search');
   const bannerSearch = document.querySelector('#js-banner-search');
@@ -11,12 +12,15 @@ const scrolledNav = () => {
         buttons.forEach(button => {
             button.classList.remove('white-btn')
         })
-
+        balance.classList.remove('text-white');
+        balance.style.borderRight = '1px solid #660F10';
       } else {
         navbar.classList.add('bg-transparent');
         buttons.forEach(button => {
             button.classList.add('white-btn')
         })
+        balance.classList.add('text-white');
+        balance.style.borderRight = '1px solid white';
       }
 
       if (window.scrollY >= 200) {
