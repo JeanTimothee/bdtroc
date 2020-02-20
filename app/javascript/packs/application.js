@@ -23,20 +23,18 @@ require("channels")
 // ----------------------------------------------------
 
 import "bootstrap";
-import { scrolledNav } from 'components/navbar'
-import { stopCarousel } from 'components/carousel'
-
-// scroll effect of the navbar on Home Page
-
-// stop boostrap carousel (for preview) to autoplay
-
+import { scrolledNav } from '../components/navbar';
+import { stopCarousel } from '../components/carousel';
 import { loadDynamicBannerText } from '../components/banner';
+import { initMapbox } from '../plugins/init_mapbox';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   // [...]
+  scrolledNav(); // scroll effect of the navbar on Home Page
+  stopCarousel(); // stop boostrap carousel (for preview) to autoplay
+  initMapbox();
+
   loadDynamicBannerText();
-  scrolledNav();
-  stopCarousel();
 });
 
