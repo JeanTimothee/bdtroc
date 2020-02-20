@@ -34,7 +34,13 @@
   display: flex;
   flex-direction: column;
   .card-book-bookings {
+    position: relative;
     margin-top: 10px;
+  }
+  #booking_btn {
+    position: absolute;
+    left: 520px;
+    top: 126px;
   }
 }
 .card-book-infos {
@@ -51,43 +57,6 @@
     opacity: .7;
     margin: 0;
   }
-}
-.book-btn{
-    width: 70%;
-    background-color: $light-red;
-    border-color: transparent;
-    font-weight: bold;
-    margin-left: 100px;
-    color: white;
-
-    &:hover {
-      background-color: $dark-red;
-      border-color: transparent;
-      color: white;
-    }
-}
-.btm-btns {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 10px;
-}
-.edit-admin-btn{
-  font-size: 8px;
-  padding: 7px 29px;
-  background-color: $medium-gray;
-  color: white;
-  font-weight: bold;
-  margin: 8px 5px;
-
-}
-
-.delete-admin-btn{
-  font-size: 8px;
-  padding: 7px 24px;
-  background-color: $medium-gray;
-  color: white;
-  font-weight: bold;
-  margin: 8px 5px;
 }
 
 .cards-index a {

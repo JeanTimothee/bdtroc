@@ -24,33 +24,36 @@
                   <li><b>From: </b><%= booking.start_date %> <b>to: </b><%= booking.end_date %></li>
                 <% end %>
               </ul>
+            <% if @book.user == current_user %>
+                <!-- <div class= "btm-btns"> -->
+                <%= link_to edit_book_path(@book), class: "btn btn-flat" do %>
+                  <i class="fas fa-pencil-alt"></i> Edit
+                <% end %><br>
+
+                <%= link_to book_path(@book), method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <i class="fas fa-trash"></i>
+                <% end %><br>
+                <!-- </div> -->
+              <% else %>
+                <!-- <div> -->
+                  <%= link_to "Book this comic", new_book_booking_path(@book), class: "btn btn-flat", id: "booking_btn"%><br>
+                <!-- </div> -->
+            <% end %>
           </div>
-          <%= link_to "Book this comic", new_book_booking_path(@book), class: "book-btn btn my-2" %><br>
         </div>
       </div>
     </div>
   </div>
 
-  <% if policy(@book).update? && policy(@book).destroy? %>
 
-    <div class= "btm-btns">
-    <%= link_to "Edit", edit_book_path(@book), :class => "edit-admin-btn btn my-2" %><br>
-
-    <%= link_to "Delete",
-                book_path(@book),
-                method: :delete,
-                data: { confirm: "Are you sure?" },
-                :class => "delete-admin-btn btn mb-2" %><br>
-    </div>
-
-  <% end %>
 
   <div class="card-book book-map">
     <h4>Where to find this comic book</h4>
     <div id="map"
     style="width:100%; height: 300px;"
     data-marker="<%= @marker.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 
 </div>
