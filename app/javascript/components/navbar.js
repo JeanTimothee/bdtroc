@@ -8,19 +8,25 @@ const scrolledNav = () => {
   if (navbar) {
     window.addEventListener('scroll', () => {
       if (window.scrollY >= 460) {
+        navbarSearch.classList.remove('d-none');
         navbar.classList.remove('bg-transparent');
         buttons.forEach(button => {
-            button.classList.remove('white-btn')
+          button.classList.remove('white-btn')
         })
-        balance.classList.remove('text-white');
-        balance.classList.remove('border-white');
+        if (balance) {
+          balance.classList.remove('text-white');
+          balance.classList.remove('border-white');
+        }
       } else {
+        navbarSearch.classList.add('d-none');
         navbar.classList.add('bg-transparent');
         buttons.forEach(button => {
             button.classList.add('white-btn')
         })
-        balance.classList.add('text-white');
-        balance.classList.add('border-white');
+        if (balance) {
+          balance.classList.add('text-white');
+          balance.classList.add('border-white');
+        }
       }
 
       if (window.scrollY >= 200) {

@@ -10,23 +10,22 @@
   </button>
 
 
- <div class="search">
-  <%= form_tag books_path, method: :get, novalidate: "novalidate", class: "simple_form search"  do %>
-    <div class="search-form-control form-group mb-0">
-      <%= text_field_tag :query,
-          params[:query],
-          class: "search-input form-control string required",
-          id: "search_query",
-          placeholder: "Find a comics",
-          value: ""
-      %>
-      <%= button_tag(type: "submit", class: "btn btn-flat") do %>
-        <i class="fas fa-search"></i> Search
-      <% end %>
-    </div>
-  <% end %>
- </div>
-
+  <div class="search">
+    <%= form_tag books_path, method: :get, novalidate: "novalidate", class: "simple_form search"  do %>
+      <div class="search-form-control form-group mb-0">
+        <%= text_field_tag :query,
+            params[:query],
+            class: "search-input form-control string required",
+            id: "search_query",
+            placeholder: "Find a comics",
+            value: ""
+        %>
+        <%= button_tag(type: "submit", class: "btn btn-flat") do %>
+          <i class="fas fa-search"></i> Search
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
   <% if user_signed_in? %>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
