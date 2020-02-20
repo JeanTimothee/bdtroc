@@ -25,7 +25,7 @@ class BookPolicy < ApplicationPolicy
     edit?
   end
 
-  def delete?
+  def destroy?
     is_owner?
   end
 

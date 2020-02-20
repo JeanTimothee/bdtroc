@@ -30,6 +30,9 @@
       </div>
     </div>
   </div>
+
+  <% if policy(@book).update? && policy(@book).destroy? %>
+
     <div class= "btm-btns">
     <%= link_to "Edit", edit_book_path(@book), :class => "edit-admin-btn btn my-2" %><br>
 
@@ -39,6 +42,9 @@
                 data: { confirm: "Are you sure?" },
                 :class => "delete-admin-btn btn mb-2" %><br>
     </div>
+
+  <% end %>
+
 </div>
 
 
