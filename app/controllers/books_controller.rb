@@ -19,7 +19,7 @@ class BooksController < ApplicationController
         lat: @book.user.latitude,
         lng: @book.user.longitude,
         infoWindow: render_to_string(partial: "map_info_window", locals: { user: @book.user }),
-        image_url: helpers.asset_url('mapmarker.png')
+        image_url: helpers.asset_url('redbook.png')
       }
 
     authorize @book

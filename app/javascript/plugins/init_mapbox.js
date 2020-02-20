@@ -21,8 +21,8 @@ const initMapbox = () => {
   element.className = 'marker';
   element.style.backgroundImage = `url('${marker.image_url}')`;
   element.style.backgroundSize = 'contain';
-  element.style.width = '50px';
-  element.style.height = '50px';
+  element.style.width = '40px';
+  element.style.height = '40px';
   // Pass the element as an argument to the new marker
 
   console.log(marker.image_url)
