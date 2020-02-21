@@ -10,13 +10,8 @@ class BookingsController < ApplicationController
 
   def new
       @book = Book.find(params[:book_id])
-    # if user_signed_in?
       @booking = Booking.new
       authorize @booking
-    # else
-    #   flash[:alert] = "Please Login to make a reservation"
-    #   redirect_to new_user_session_path(path: "new-booking")
-    # end
   end
 
   def create
