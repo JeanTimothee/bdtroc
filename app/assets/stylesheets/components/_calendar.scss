@@ -1,0 +1,28 @@
+.flatpickr-calendar {
+  width: 100%!important;
+  padding: 10px;
+}
+
+.flatpickr-rContainer {
+  width: 100%!important;
+}
+
+.flatpickr-days {
+  width: 100%!important;
+}
+
+.dayContainer {
+  width: 50%!important;
+  max-width: none!important;
+}
+
+.selected {
+  background: $light-red!important;
+  border: none!important;
+}
+
+
+.endRange {
+  background: $light-red!important;
+  border: none!important;
+}

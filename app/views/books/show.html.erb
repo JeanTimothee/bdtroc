@@ -47,16 +47,12 @@
               </div>
             <% else %>
 
-              <div id="calendar-form" data-bookings="<%= @book.bookings.to_json %>">
+              <div id="calendar-form" class="w-100" data-bookings="<%= @book.bookings.to_json %>">
 
-                <%= simple_form_for [@book, @booking] do |f| %>
-
-                    <%= f.input :start_date, as: :string, label: false, input_html: { id: "start-date"}  %>
-
-                    <%= f.input :end_date, as: :string, label: false, input_html: { id: "end-date", class: "d-none" } %>
-
+                <%= simple_form_for [@book, @booking], html: { class: "w-100"} do |f| %>
+                  <%= f.input :start_date, as: :string, label: false, input_html: { id: "start-date", class: "d-none" }  %>
+                  <%= f.input :end_date, as: :string, label: false, input_html: { id: "end-date", class: "d-none" } %>
                   <%= f.submit "Make a Reservation", class: "btn btn-flat btn-block" %>
-
                 <% end %>
 
               </div>
