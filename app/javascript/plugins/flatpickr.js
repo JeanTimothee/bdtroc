@@ -10,7 +10,6 @@ const initFlatPickr = () => {
 
   const calendarForm = document.getElementById('calendar-form')
   if(calendarForm) {
-    console.log('hello')
     const bookings = calendarForm.dataset.bookings;
     JSON.parse(bookings).forEach((element) => {
       const obj = {};
@@ -22,9 +21,8 @@ const initFlatPickr = () => {
 
     flatpickr("#start-date", {
       altInput: true,
-      inLine: true,
+      inline: true,
       mode: "range",
-      // defaultDate: new Date().fp_incr(1),
       minDate: new Date().fp_incr(1),
       showMonths: 2,
       "plugins": [new rangePlugin( { input: "#end-date"})],
