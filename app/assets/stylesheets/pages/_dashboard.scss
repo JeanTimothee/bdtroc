@@ -1,0 +1,62 @@
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.dashboard-card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-booking {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+}
+
+.dashboard-booking-cover {
+  width: 100px;
+  margin-right: 10px;
+  img {
+    width: 100%;
+  }
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr 2fr;
+  }
+}

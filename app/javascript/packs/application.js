@@ -27,10 +27,12 @@ import { scrolledNav } from '../components/navbar';
 import { stopCarousel } from '../components/carousel';
 import { loadDynamicBannerText } from '../components/banner';
 import { initMapbox } from '../plugins/init_mapbox';
+import { initFlatPickr } from '../plugins/flatpickr';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   // [...]
+  initFlatPickr();
   scrolledNav(); // scroll effect of the navbar on Home Page
   stopCarousel(); // stop boostrap carousel (for preview) to autoplay
   initMapbox();

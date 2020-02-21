@@ -18,26 +18,50 @@
           </div>
           <hr style="width: 100%">
           <div class="card-book-bookings">
-            <h2>Last bookings</h2>
-              <ul>
-                <% @bookings.last(3).each do |booking| %>
-                  <li><b>From: </b><%= booking.start_date %> <b>to: </b><%= booking.end_date %></li>
-                <% end %>
-              </ul>
+              <% if params[:flash] %>
+                <b style="color:red"><%= params[:flash] %></b>
+              <% end %>
             <% if @book.user == current_user %>
-                <!-- <div class= "btm-btns"> -->
-                <%= link_to edit_book_path(@book), class: "btn btn-flat" do %>
+                <h3 class="text-center">Last bookings</h2>
+                <% if @bookings.empty? %>
+                  <h5>No Bookings yet...</h3>
+                  <br>
+                  <br>
+                <% else %>
+                  <ul>
+                    <% @bookings.last(3).each do |booking| %>
+                      <li><b>From: </b><%= booking.start_date %> <b>to: </b><%= booking.end_date %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              <div class="d-flex bd-highlight align-bottom">
+
+                <%= link_to edit_book_path(@book), class: "btn btn-flat p-2 flex-grow-1 bd-highlight" do %>
                   <i class="fas fa-pencil-alt"></i> Edit
                 <% end %><br>
 
-                <%= link_to book_path(@book), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <%= link_to book_path(@book), method: :delete, class: "py-2 px-4 ml-2 bd-highlight bg-light rounded",data: { confirm: "Are you sure?" } do %>
                   <i class="fas fa-trash"></i>
                 <% end %><br>
-                <!-- </div> -->
-              <% else %>
-                <!-- <div> -->
-                  <%= link_to "Book this comic", new_book_booking_path(@book), class: "btn btn-flat", id: "booking_btn"%><br>
-                <!-- </div> -->
+
+              </div>
+            <% else %>
+              <h3 class="text-center">Bookings</h3>
+
+              <div id="calendar-form" data-bookings="<%= @book.bookings.to_json %>">
+                <%= simple_form_for [@book, @booking] do |f| %>
+              <!--     <div class="form-row">
+                    <div class="form-group col-md-6"> -->
+                      <%= f.input :start_date, as: :string, input_html: { id: "start-date"}  %>
+                    <!-- </div> -->
+                    <!-- <div class="form-group col-md-6"> -->
+                      <%= f.input :end_date, as: :string, input_html: { id: "end-date" } %>
+                    <!-- </div> -->
+                  <%= f.submit "Make a Reservation", class: "btn btn-flat btn-block" %>
+                <% end %>
+
+              </div>
+                  <%#= link_to "Book this comic", new_book_booking_path(@book), class: "btn btn-flat", id: "booking_btn"%><br>
             <% end %>
           </div>
         </div>
@@ -48,15 +72,20 @@
 
 
   <div class="card-book book-map">
-    <h4>Where to find this comic book</h4>
+    <% if @book.user == current_user %>
+      <%= link_to dashboard_path, class: "text-center" do %>
+      <p>Update my location<p>
+      <% end %>
+    <% else %>
+      <h3 class="text-center">Where to find this comic book</h4>
+    <% end %>
+
     <div id="map"
     style="width:100%; height: 300px;"
     data-marker="<%= @marker.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
-
-<% raise %>
 </div>
 
 

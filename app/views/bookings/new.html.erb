@@ -7,21 +7,17 @@
       <%= @booking.book.name %>
     <% end %>
   </h2>
+
   <% if params[:flash] %>
     <b style="color:red"><%= params[:flash] %></b>
   <% end %>
-  <%= simple_form_for [@book, @booking] do |f| %>
-    <%= f.input :start_date, as: :string, input_html: { id: "start-date"}  %>
-    <%= f.input :end_date, as: :string, input_html: { id: "end-date" } %>
-    <%= f.submit "Make a Reservation", class: "btn btn-flat" %>
-  <% end %>
+
+  <div id="calendar-form" data-bookings="<%= @book.bookings.to_json %>">
+      <%= simple_form_for [@book, @booking] do |f| %>
+        <%= f.input :start_date, as: :string, input_html: { id: "start-date"}  %>
+        <%= f.input :end_date, as: :string, input_html: { id: "end-date" } %>
+        <%= f.submit "Make a Reservation", class: "btn btn-flat" %>
+      <% end %>
+  </div>
+
 </div>
-
-<% @book.bookings.each do |booking| %>
-<% end %>
-
-
-
-<div id="test" data-bookings="<%= @book.bookings.to_json %>"></div>
-
-
