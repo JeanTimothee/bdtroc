@@ -1,3 +1,5 @@
+<div class="container container-form mt-5">
+  <h4>Edit "<%= @book.name %>"</h4>
   <%=  simple_form_for(@book) do |f| %>
     <%= f.input :name %>
     <%= f.input :genre %>
@@ -7,5 +9,8 @@
     <%= f.input :description, as: :text %>
     <%= f.input :cover, as: :file %>
     <%= f.input :previews, as: :file, input_html: { multiple: true } %>
-    <%= f.submit %>
+    <div class="form-actions">
+      <%= f.button :submit, "Update book", class: "submit-btn" %>
+    </div>
   <% end %>
+</div>
