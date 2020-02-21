@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :books
-  has_many :bookings
+  has_many :books, dependent: :destroy
+  has_many :bookings, dependent: :destroy
   geocoded_by :address
   has_one_attached :avatar
   after_validation :geocode, if: :will_save_change_to_address?
