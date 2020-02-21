@@ -29,7 +29,7 @@
                 <% end %>
               </div>
               <div class="dashboard-booking-info">
-                <p><b><%= link_to current_user.bookings.last.book.name, book_path(booking.book) %></b></p>
+                <p><b><%= link_to booking.book.name, book_path(booking.book) %></b></p>
                 <ul class="list-unstyled">
                   <li><b><i class="far fa-calendar-alt"></i></b> <%= booking.start_date.strftime("%d %B") %> - <%= booking.end_date.strftime("%d %B") %></li>
                   <li><b><i class="fas fa-map-marker-alt"></i></b> <%= booking.book.user.address %> <%= link_to "(Map)", book_path(booking.book, anchor: "map"), class: "small map-link" %></li>
@@ -50,7 +50,7 @@
                 <% end %>
               </div>
               <div class="dashboard-booking-info">
-                <p><b><%= link_to current_user.bookings.last.book.name, book_path(booking.book) %></b></p>
+                <p><b><%= link_to booking.book.name, book_path(booking.book) %></b></p>
                 <ul class="list-unstyled">
                   <li><b><i class="far fa-calendar-alt"></i></b> <%= booking.start_date.strftime("%d %B") %> - <%= booking.end_date.strftime("%d %B") %></li>
                   <li><b><i class="fas fa-map-marker-alt"></i></b> <%= booking.book.user.address %> <%= link_to "(Map)", book_path(booking.book, anchor: "map"), class: "small map-link" %></li>
@@ -71,7 +71,7 @@
                 <% end %>
               </div>
               <div class="dashboard-booking-info">
-                <p><b><%= link_to current_user.bookings.last.book.name, book_path(booking.book) %></b></p>
+                <p><b><%= link_to booking.book.name, book_path(booking.book) %></b></p>
                 <ul class="list-unstyled">
                   <li><b><i class="far fa-calendar-alt"></i></b> <%= booking.start_date.strftime("%d %B") %> - <%= booking.end_date.strftime("%d %B") %></li>
                   <li><b><i class="fas fa-map-marker-alt"></i></b> <%= booking.book.user.address %> <%= link_to "(Map)", book_path(booking.book, anchor: "map"), class: "small map-link" %></li>
