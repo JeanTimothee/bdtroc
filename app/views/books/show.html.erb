@@ -50,13 +50,10 @@
               <div id="calendar-form" data-bookings="<%= @book.bookings.to_json %>">
 
                 <%= simple_form_for [@book, @booking] do |f| %>
-                  <div class="form-row">
 
                     <%= f.input :start_date, as: :string, label: false, input_html: { id: "start-date"}  %>
 
-                    <% f.input :end_date, as: :string, input_html: { id: "end-date" } %>
-
-                  </div>
+                    <%= f.input :end_date, as: :string, label: false, input_html: { id: "end-date", class: "d-none" } %>
 
                   <%= f.submit "Make a Reservation", class: "btn btn-flat btn-block" %>
 
