@@ -6,7 +6,7 @@
         <li><h2><%= current_user.name ? current_user.name : "" %></h2></li>
       </div>
       <ul class="list-unstyled">
-        <li class= "dashboard-balance-color"><i class="fas fa-coins"></i> Your balance: <%= current_user.points %></li>
+        <li class= "dashboard-balance-color"><i class="fas fa-coins"></i> Your balance: <b><%= current_user.points %></b></li>
         <li><i class="fas fa-home"></i> <%= current_user.address %></li>
       </ul>
     </div>
