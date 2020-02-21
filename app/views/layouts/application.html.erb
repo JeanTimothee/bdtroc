@@ -20,13 +20,8 @@
     <% if params[:action] != 'home'  %>
       <%= render 'shared/navbar'%>
     <% end %>
-    <% if params[:controller] == "bookings" && params[:action] == "create" %>
-      <%= render 'shared/flashes' %>
-    <% end %>
 
-    <% if params[:controller] == "devise/sessions" && params[:path] == "new-booking" %>
-      <%= render 'shared/flashes' %>
-    <% end %>
+    <%= render 'shared/flashes' %>
 
 
     <%= yield %>
