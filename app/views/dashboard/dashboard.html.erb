@@ -1,16 +1,21 @@
 <div class="container mt-5">
   <div class="dashboard-cards">
-    <div class="dashboard-card">
-      <div class="text-center">
-        <%= cl_image_tag current_user.avatar.key, width: 100, height: 100, crop: :fill, class: "avatar-large" %>
+    <div class="dashboard-card card-left">
+      <div class="text-center list-unstyled">
+        <li><%= cl_image_tag current_user.avatar.key, width: 100, height: 100, crop: :fill, class: "avatar-large" %></li>
+        <li><h2><%= current_user.name ? current_user.name : "" %></h2></li>
       </div>
       <ul class="list-unstyled">
-        <li><i class="fas fa-coins"></i> <%= current_user.points %></li>
+        <li class= "dashboard-balance-color"><i class="fas fa-coins"></i> Your balance: <%= current_user.points %></li>
         <li><i class="fas fa-home"></i> <%= current_user.address %></li>
       </ul>
     </div>
-    <div class="dashboard-card">
-      <h1>Hello, <%= current_user.email %></h1>
+    <div class="dashboard-card card-right">
+      <% if current_user.name? %>
+        <h1>Hello, <%= current_user.name %></h1>
+      <% else %>
+        <h1>Hello,</h1>
+      <% end %>
       <br><br>
       <div class="dashboard-bookings">
         <div class="current-readings">
@@ -80,7 +85,3 @@
   </div>
 
 </div>
-
-
-
-
