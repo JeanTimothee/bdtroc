@@ -46,22 +46,23 @@
 
               </div>
             <% else %>
-              <h3 class="text-center">Bookings</h3>
 
               <div id="calendar-form" data-bookings="<%= @book.bookings.to_json %>">
+
                 <%= simple_form_for [@book, @booking] do |f| %>
-              <!--     <div class="form-row">
-                    <div class="form-group col-md-6"> -->
-                      <%= f.input :start_date, as: :string, input_html: { id: "start-date"}  %>
-                    <!-- </div> -->
-                    <!-- <div class="form-group col-md-6"> -->
-                      <%= f.input :end_date, as: :string, input_html: { id: "end-date" } %>
-                    <!-- </div> -->
+                  <div class="form-row">
+
+                    <%= f.input :start_date, as: :string, label: false, input_html: { id: "start-date"}  %>
+
+                    <% f.input :end_date, as: :string, input_html: { id: "end-date" } %>
+
+                  </div>
+
                   <%= f.submit "Make a Reservation", class: "btn btn-flat btn-block" %>
+
                 <% end %>
 
               </div>
-                  <%#= link_to "Book this comic", new_book_booking_path(@book), class: "btn btn-flat", id: "booking_btn"%><br>
             <% end %>
           </div>
         </div>

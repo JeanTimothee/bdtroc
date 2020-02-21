@@ -15,7 +15,11 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @booking = params[:booking]
+    @range = @booking[:start_date]
+    @array = @range.split(" ")
     @booking = Booking.new(booking_params)
+    @booking.end_date  = @array[2]
     @booking.book = Book.find(params[:book_id])
     @booking.user = current_user
     authorize @booking
@@ -40,7 +44,6 @@ class BookingsController < ApplicationController
 
     @booking.total_points = (@booking.end_date - @booking.start_date).to_i
     @booking.book.user.points = @booking.total_points
-
     if current_user.points < @booking.total_points
       @booking_valid = false
       @alert = "Not enough credit"
