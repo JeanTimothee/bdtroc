@@ -25,8 +25,6 @@ const initMapbox = () => {
   element.style.height = '40px';
   // Pass the element as an argument to the new marker
 
-  console.log(marker.image_url)
-
   marker = new mapboxgl.Marker(element)
     .setLngLat([marker.lng, marker.lat])
     .setPopup(popup)
