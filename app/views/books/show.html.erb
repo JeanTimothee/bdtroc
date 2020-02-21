@@ -3,8 +3,17 @@
     <div class="row">
       <div class="col-sm-12 col-md-4">
         <div class="card-book-left">
-          <%= cl_image_tag @book.cover.key, class: "cover" %>
-          <%= render 'shared/preview_books_show' %>
+          <div class="card-book-left-cover">
+            <%= cl_image_tag @book.cover.key, class: "cover" %>
+            <%= render 'shared/preview_books_show' %>
+          </div>
+          <div id="preview-miniature">
+            <% @book.previews.each_with_index do |preview, i| %>
+              <div data-toggle="modal" data-target="#exampleModal" data-slide-to="<%= i %>" class="preview-mini">
+                <%= cl_image_tag preview.key, class: "w-100"%>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
       <div class="col-sm-12 col-md-8">

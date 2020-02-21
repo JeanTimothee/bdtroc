@@ -6,8 +6,9 @@
   padding: 20px;
 }
 
-.card-book-left {
+.card-book-left-cover{
   position: relative;
+  cursor: pointer;
   .cover {
     transition: opacity 500ms ease-out;
   }
@@ -23,7 +24,14 @@
     display:block;
   }
 }
-.card-book-left > button {
+
+#preview-miniature {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card-book-left-cover > button {
     position: absolute;
     left: 33%;
     top: 50%;
