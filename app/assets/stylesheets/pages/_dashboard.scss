@@ -2,6 +2,12 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
+  a {
+    color: black;
+  }
+  .map-link {
+    text-decoration: underline;
+  }
 }
 
 .dashboard-card {
@@ -16,6 +22,8 @@
   padding: 10px;
   border-radius: 5px;
   display: flex;
+  margin-bottom: 30px;
+  align-items: center;
 }
 
 .dashboard-booking-cover {
@@ -24,6 +32,14 @@
   img {
     width: 100%;
   }
+}
+
+.dashboard-bookings .current-readings .dashboard-booking {
+    border: 1px solid $dark-red;
+}
+
+.dashboard-bookings .history .dashboard-booking {
+    opacity: 0.4;
 }
 
 // Smallest device
