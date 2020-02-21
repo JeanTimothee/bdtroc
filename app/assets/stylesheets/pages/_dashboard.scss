@@ -1,7 +1,7 @@
 .dashboard-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 16px;
+  display: flex;
+  // grid-template-columns: 1fr 1fr;
+  // grid-gap: 16px;
   a {
     color: black;
   }
@@ -13,8 +13,20 @@
 .dashboard-card {
   background-color: white;
   padding: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-cards .card-left {
+  height: 50vh;
+  position: sticky;
+  top: 116px;
+}
+
+.dashboard-cards .card-right {
+  flex-grow: 1;
 }
 
 .dashboard-booking {
@@ -32,6 +44,10 @@
   img {
     width: 100%;
   }
+}
+
+.dashboard-card .dashboard-balance-color {
+  color: $dark-red;
 }
 
 .dashboard-bookings .current-readings .dashboard-booking {
