@@ -12,19 +12,19 @@ puts '----------------'
 
 
 puts 'Create users'
-@user1 = User.new(email: 'user1@gmail.com', password:'123456', address: '158 Rue Oberkampf, 75011, Paris', points: 10)
+@user1 = User.new(email: 'user1@gmail.com', password:'123456', address: '158 Rue Oberkampf, 75011, Paris', points: 50, name: 'Asterix')
 @user1.avatar.attach(io: File.open('app/assets/images/asterix-avatar.jpg'), filename: "asterix-avatar.jpg", content_type: "image/jpg")
 @user1.save!
 
-@user2 = User.create!(email: 'user2@gmail.com', password:'123456', address: '108 Rue Oberkampf, 75011 Paris', points: 10)
+@user2 = User.create!(email: 'user2@gmail.com', password:'123456', address: '108 Rue Oberkampf, 75011 Paris', points: 50, name: 'Obelix')
 @user2.avatar.attach(io: File.open('app/assets/images/obelix-avatar.jpg'), filename: "obelix-avatar.jpg", content_type: "image/jpg")
 @user2.save!
 
-@user3 = User.create!(email: 'user3@gmail.com', password:'123456', address: '123 Rue Oberkampf, 75011 Paris', points: 10)
+@user3 = User.create!(email: 'user3@gmail.com', password:'123456', address: '123 Rue Oberkampf, 75011 Paris', points: 50, name: 'Gaston')
 @user3.avatar.attach(io: File.open('app/assets/images/gaston-avatar.jpg'), filename: "gaston-avatar.jpg", content_type: "image/jpg")
 @user3.save!
 
-@user4 = User.create!(email: 'user4@gmail.com', password:'123456', address: '109 Rue Oberkampf, 75011 Paris', points: 10)
+@user4 = User.create!(email: 'user4@gmail.com', password:'123456', address: '109 Rue Oberkampf, 75011 Paris', points: 50, name: 'Tintin')
 @user4.avatar.attach(io: File.open('app/assets/images/tintin-avatar.jpg'), filename: "tintin-avatar.jpg", content_type: "image/jpg")
 @user4.save!
 
@@ -89,4 +89,47 @@ end
 
 puts '>>>>>> Done!'
 puts "#{Book.count} books created!"
+puts '----------------'
+
+
+puts 'Create Bookings'
+
+books = Book.all
+
+puts 'Create passed bookings'
+booking1 = Booking.new(start_date: Date.new(2019,11,3), end_date: Date.new(2019,11,10))
+booking1.book = books[1]
+booking1.user = @user2
+booking1.save!
+
+booking2 = Booking.new(start_date: Date.new(2019,10,15), end_date: Date.new(2019,10,20))
+booking2.book = books[2]
+booking2.user = @user2
+booking2.save!
+
+booking3 = Booking.new(start_date: Date.new(2019,9,1), end_date: Date.new(2019,9,5))
+booking3.book = books[3]
+booking3.user = @user2
+booking3.save!
+puts '>>>> Done!'
+
+puts 'Create current booking'
+booking5 = Booking.new(start_date: Date.new(2020,2,20), end_date: Date.new(2020,2,23))
+booking5.book = books[5]
+booking5.user = @user2
+booking5.save!
+puts '>>>> Done!'
+
+puts 'Create bookings to come'
+booking4 = Booking.new(start_date: Date.new(2020,2,25), end_date: Date.new(2020,2,27))
+booking4.book = books[4]
+booking4.user = @user2
+booking4.save!
+puts '>>>> Done!'
+
+
+
+
+puts '>>>>>> Done!'
+puts "#{Booking.count} booking created!"
 puts '----------------'
