@@ -42,7 +42,7 @@ class BookingsController < ApplicationController
 
     # Points logic
 
-    @booking.total_points = (@booking.end_date - @booking.start_date).to_i
+    @booking.total_points = (@booking.end_date - @booking.start_date).to_i + 1
     @booking.book.user.points = @booking.total_points
     if current_user.points < @booking.total_points
       @booking_valid = false
@@ -56,6 +56,7 @@ class BookingsController < ApplicationController
     if @booking_valid && @booking.save
       current_user.save
       @booking.book.user.save
+      flash[:notice] = "Reservation confirmed! Happy Reading!"
       redirect_to dashboard_path
     else
       redirect_to new_book_booking_path(@booking.book, flash:@alert)
