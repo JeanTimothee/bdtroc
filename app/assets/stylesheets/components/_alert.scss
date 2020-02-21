@@ -1,5 +1,6 @@
 .alert {
-  top: 5px;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
   z-index: 1000;
-  text-align: center;
 }
