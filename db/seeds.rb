@@ -35,7 +35,7 @@ puts '----------------'
 
 puts 'Create Books'
 
-url = "https://www.editions-delcourt.fr/bd/liste-des-collections-bd/terres-de-legendes.html"
+url = "https://www.editions-delcourt.fr/bd/liste-des-collections-bd/humour-de-rire.html"
 
 html_file = open(url).read
 html_doc = Nokogiri::HTML(html_file)
