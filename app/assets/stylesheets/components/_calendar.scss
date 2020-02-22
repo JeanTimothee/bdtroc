@@ -21,8 +21,45 @@
   border: none!important;
 }
 
-
 .endRange {
   background: $light-red!important;
   border: none!important;
+}
+
+@media(max-width: 988px) {
+
+  .flatpickr-calendar {
+    padding: 0px 10px!important;
+  }
+
+  .flatpickr-calendar .flatpickr-months,
+  .flatpickr-calendar .flatpickr-days {
+    display: block;
+    width: 100%;
+  }
+
+  .flatpickr-months > .flatpickr-month:nth-child(2),
+  .flatpickr-days > .dayContainer:nth-child(1)  {
+    display: block;
+    width: 100%!important;
+  }
+
+  .flatpickr-months > .flatpickr-month:nth-child(3),
+  .flatpickr-weekdays > .flatpickr-weekdaycontainer:nth-child(2),
+  .flatpickr-days > .dayContainer:nth-child(2) {
+    display: none;
+  }
+
+  .flatpickr-days > .dayContainer:nth-child(1) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  .flatpickr-days > .dayContainer:nth-child(1) .flatpickr-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: none;
+  }
 }
