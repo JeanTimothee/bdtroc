@@ -53,6 +53,7 @@
   .flatpickr-days > .dayContainer:nth-child(1) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    min-width: 0px;
   }
 
   .flatpickr-days > .dayContainer:nth-child(1) .flatpickr-day {
