@@ -54,4 +54,28 @@
   color: white!important;
 }
 
+.upper-navbar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0px;
+  width:100%;
+}
+
+.search-mobile {
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.search-mobile input {
+  width: 50%;
+  display: inline-block;
+}
+
+@media (max-width: 767px) {
+  .navbar-lewagon {
+    position: relative;
+  }
+}
 

@@ -1,7 +1,5 @@
 .dashboard-cards {
   display: flex;
-  // grid-template-columns: 1fr 1fr;
-  // grid-gap: 16px;
   a {
     color: black;
   }
@@ -20,9 +18,10 @@
 }
 
 .dashboard-cards .card-left {
-  height: 50vh;
+  height: 100%;
   position: sticky;
   top: 116px;
+  margin-bottom: 20px;
 }
 
 .dashboard-cards .card-right {
@@ -59,37 +58,12 @@
     opacity: 0.4;
 }
 
-// Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
-  .dashboard-cards {
-    grid-template-columns: 1fr;
-  }
-}
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
+@media (max-width: 767px) {
   .dashboard-cards {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .dashboard-cards {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .dashboard-cards {
-    grid-template-columns: 1fr 2fr;
-  }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .dashboard-cards {
-    grid-template-columns: 1fr 2fr;
+  .dashboard-cards .card-left {
+    position: static;
   }
 }
