@@ -13,12 +13,12 @@
   margin-left: auto;
   border-radius: 4px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  // h3, a {
-  //   color: $dark-red;
-  // }
-  // a:hover {
-  //   text-decoration: none;
-  // }
+}
+
+@media(max-width: 575px) {
+  .container-form {
+    width: 80%;
+  }
 }
 
 .container-form a {

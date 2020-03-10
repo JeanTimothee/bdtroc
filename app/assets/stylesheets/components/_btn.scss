@@ -21,6 +21,15 @@
   margin-bottom: 4px;
 }
 
+@media(max-width: 575px) {
+  .btn-flat {
+    padding: 7px 12px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+  }
+}
+
+
 .btn-flat:hover {
   background: $dark-red;
   color: white;
