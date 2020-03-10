@@ -59,3 +59,9 @@
     flex-wrap: unset;
   }
 }
+
+@media(max-width: 575px) {
+  .navbar-collapse.collapse.show {
+    position: absolute;
+  }
+}
