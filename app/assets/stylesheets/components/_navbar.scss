@@ -54,4 +54,8 @@
   color: white!important;
 }
 
-
+@media(max-width: 575px) {
+  .navbar {
+    flex-wrap: unset;
+  }
+}
