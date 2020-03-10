@@ -37,6 +37,7 @@ const scrolledNav = () => {
         navbarSearch.classList.add('d-none');
         bannerSearch.classList.remove('d-none');
         navbarBrand.classList.add('flex-grow-1');
+        navbar.classList.add('bg-transparent');
       }
     });
   }

@@ -1,13 +1,11 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top navbar-shadow">
-  <div class="navbar-brand">
-    <div class="navbar-brand">
-      <%= link_to root_path do %>
-        <%= image_tag "https://www.dezign.fr/images/sticker-mural-bulle-bd-interogation.png" %>
-      <% end %>
-    </div>
+<div id="<%= "js-scroll-navbar" if params[:action] == "home" %>" class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top <%= "navbar-shadow" if params[:action] != "home" %>">
+  <div id="js-navbar-brand" class="navbar-brand">
+    <%= link_to root_path do %>
+      <%= image_tag "https://www.dezign.fr/images/sticker-mural-bulle-bd-interogation.png" %>
+    <% end %>
   </div>
 
-  <div class="search">
+  <div id="js-navbar-search" class="search <%= "d-none" if params[:action] == "home" %>">
     <%= form_tag books_path, method: :get, novalidate: "novalidate", class: "simple_form search"  do %>
       <div class="search-form-control form-group mb-0">
         <%= text_field_tag :query,
@@ -32,7 +30,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
-          <span class="navbar-points">Balance: <%= current_user.points == nil ? "0" : current_user.points %> <i class="fas fa-coins"></i></span>
+          <span id="js-navbar-balance" class="navbar-points">Balance: <%= current_user.points == nil ? "0" : current_user.points %> <i class="fas fa-coins"></i></span>
           <%= image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Add a comic book", new_book_path, class: "dropdown-item" %>
@@ -44,10 +42,10 @@
     </div>
   <% else %>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <%= link_to "login", new_user_session_path, class: "navbar-btn" %>
-      <%= link_to "sign-up", new_user_registration_path, class: "navbar-btn" %>
+      <%= link_to "login", new_user_session_path, class: "navbar-btn", id: "js-btn-white" %>
+      <%= link_to "sign-up", new_user_registration_path, class: "navbar-btn", id: "js-btn-white" %>
     </div>
   <% end %>
 </div>
-<div class="margin-navbar">
+<div class="<%= 'margin-navbar' if params[:action] != 'home' %>">
 </div>
