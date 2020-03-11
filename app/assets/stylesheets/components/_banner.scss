@@ -30,6 +30,13 @@
 
 }
 
+@media(max-width: 575px) {
+  .banner .search input {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
+
 .banner-typed-text:focus::-webkit-input-placeholder {
     color: transparent;
 }
@@ -40,5 +47,12 @@
   color: white;
   i {
     color: white;
+  }
+}
+
+@media(max-width: 575px) {
+  .banner .search button {
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 }

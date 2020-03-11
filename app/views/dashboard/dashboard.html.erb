@@ -2,7 +2,11 @@
   <div class="dashboard-cards">
     <div class="dashboard-card card-left">
       <div class="text-center list-unstyled">
-        <li><%= cl_image_tag current_user.avatar.key, width: 100, height: 100, crop: :fill, class: "avatar-large" %></li>
+        <% if current_user.avatar.attached? %>
+          <li><%= cl_image_tag current_user.avatar.key, width: 100, height: 100, crop: :fill, class: "avatar-large" %></li>
+        <% else %>
+          <li><%= image_tag "tintin-avatar.jpg", class: "avatar-large" %></li>
+        <% end %>
         <li><h2><%= current_user.name ? current_user.name : "" %></h2></li>
       </div>
       <ul class="list-unstyled">
