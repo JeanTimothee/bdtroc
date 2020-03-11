@@ -18,16 +18,27 @@ const initFlatPickr = () => {
       disableRangeDate.push(obj);
     });
 
-
-    flatpickr("#start-date", {
-      altInput: true,
-      inline: true,
-      mode: "range",
-      minDate: new Date().fp_incr(1),
-      showMonths: 2,
-      "plugins": [new rangePlugin( { input: "#end-date"})],
-      disable: disableRangeDate
-    });
+    if (window.innerWidth < 992) {
+      flatpickr("#start-date", {
+        altInput: true,
+        inline: true,
+        mode: "range",
+        minDate: new Date().fp_incr(1),
+        showMonths: 1,
+        "plugins": [new rangePlugin( { input: "#end-date"})],
+        disable: disableRangeDate
+      });
+    } else {
+      flatpickr("#start-date", {
+        altInput: true,
+        inline: true,
+        mode: "range",
+        minDate: new Date().fp_incr(1),
+        showMonths: 2,
+        "plugins": [new rangePlugin( { input: "#end-date"})],
+        disable: disableRangeDate
+      });
+    }
 
   }
 
